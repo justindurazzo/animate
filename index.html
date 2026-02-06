@@ -1,20 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FinTech Innovation Lab Animation</title>
+    <title>FinTech Innovation Lab Racetrack Visualization</title>
     <style>
-        /* Add your CSS for the racetrack visualization here */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
     </style>
 </head>
 <body>
-    <h1>FinTech Innovation Lab Animated Racetrack Visualization</h1>
-    <div id="racetrack">
-        <!-- Your racetrack visualization will be generated here -->
-    </div>
+    <svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <filter id="glow">
+                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feMerge>
+                    <feMergeNode />
+                    <feMergeNode in="blur" />
+                </feMerge>
+            </filter>
+            <clipPath id="track-clip">
+                <path id="clip-path" d="..." /> <!-- define the shape of your track here -->
+            </clipPath>
+        </defs>
+        <g filter="url(#glow)">
+            <path d="M100,500 C200,100 400,100 500,500" stroke="lime" stroke-width="20" fill="none" />
+            <path d="M100,480 C200,80 400,80 500,480" stroke="green" stroke-width="20" fill="none" />
+            <path d="M100,460 C200,60 400,60 500,460" stroke="cyan" stroke-width="20" fill="none" />
+            <path d="M100,440 C200,40 400,40 500,440" stroke="orange" stroke-width="20" fill="none" />
+            <path d="M100,420 C200,20 400,20 500,420" stroke="red" stroke-width="20" fill="none" />
+            <path d="M100,400 C200,0 400,0 500,400" stroke="blue" stroke-width="20" fill="none" />
+            <!-- Add more track segments as required -->
+        </g>
+    </svg>
     <script>
-        // Add your JavaScript for the animation logic here
+        const racetrack = document.querySelector('svg');
+        let pulsePos = 0;
+        function animate() {
+            pulsePos += 2;
+            // Update the position of the glowing pulse here
+            // Code for moving the pulse along the track
+            requestAnimationFrame(animate);
+        }
+        animate(); // Start the animation
     </script>
 </body>
 </html>
